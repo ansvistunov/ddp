@@ -16,12 +16,18 @@ public class Main {
         Car car = carServer.createCar();
 
         Script script = new Script();
-        //Command command = new DownCommand(4,car);
-        //script.addCommand(command);
-        //command = new ChangeColorCommand("green",car);
-        //script.addCommand(command);
-        //command = new RightCommand(4,car);
-        //script.addCommand(command);
+        Command command = new DownCommand(4,car);
+        script.addCommand(command);
+        command = new ChangeColorCommand("green",car);
+        script.addCommand(command);
+        command = new RightCommand(6,car);
+        script.addCommand(command);
+        command = new LeftCommand(3,car);
+        script.addCommand(command);
+        command = new ChangeColorCommand("red",car);
+        script.addCommand(command);
+        command = new UpCommand(2,car);
+        script.addCommand(command);
         script.execute();
 
     }
