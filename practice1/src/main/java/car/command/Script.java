@@ -1,8 +1,12 @@
 package car.command;
 
+import car.Car;
+
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * @author : Alex
@@ -24,7 +28,13 @@ public class Script {
             command.execute();
     }
 
-    public static Script load(InputStreamReader isr){
-        throw new UnsupportedOperationException("Method not implemented");
+    public static Script load(Car car, InputStreamReader isr){
+        Scanner scanner = new Scanner(isr);
+        Script script = new Script();
+        while(scanner.hasNextLine()){
+            Command command = Command.createCommand(car, scanner.nextLine());
+            script.addCommand(command);
+        }
+        return script;
     }
 }
