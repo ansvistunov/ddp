@@ -17,4 +17,8 @@ public class ChangeColorCommand extends Command<String> {
     public void execute() {
         car.setColor(ColorFactory.getColor(parameter));
     }
+
+    public static Command loadCommand(String parameter, Car car){
+        return new ChangeColorCommand(parameter, car);
+    }
 }

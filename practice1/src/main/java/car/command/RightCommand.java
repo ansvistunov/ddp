@@ -15,6 +15,9 @@ public class RightCommand extends Command<Integer>{
     @Override
     public void execute() {
         for (int i = 0; i < parameter; i++) car.moveTo(CarServer.Direction.RIGHT);
-        System.out.println("Down Command exit");
+
+    }
+    public static Command loadCommand(String parameter, Car car){
+        return new RightCommand(Integer.parseInt(parameter), car);
     }
 }

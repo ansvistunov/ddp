@@ -8,6 +8,7 @@ import car.CarServer;
  * @created : 12.03.2021, пятница
  **/
 public class LeftCommand extends Command<Integer> {
+
     public LeftCommand(Integer parameter, Car car){
         super(parameter, car);
     }
@@ -15,6 +16,8 @@ public class LeftCommand extends Command<Integer> {
     @Override
     public void execute() {
         for (int i = 0; i < parameter; i++) car.moveTo(CarServer.Direction.LEFT);
-        System.out.println("Down Command exit");
+    }
+    public static Command loadCommand(String parameter, Car car){
+        return new LeftCommand(Integer.parseInt(parameter), car);
     }
 }

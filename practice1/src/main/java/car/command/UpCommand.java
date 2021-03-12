@@ -16,4 +16,7 @@ public class UpCommand extends Command<Integer>{
     public void execute() {
         for (int i = 0; i < parameter; i++) car.moveTo(CarServer.Direction.UP);
     }
+    public static Command loadCommand(String parameter, Car car){
+        return new UpCommand(Integer.parseInt(parameter), car);
+    }
 }
