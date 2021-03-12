@@ -2,6 +2,8 @@ package car;
 
 import car.command.*;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 
 /**
@@ -10,7 +12,9 @@ import car.command.*;
  **/
 public class Main {
     public static void main(String[] args) throws Exception{
-        FieldMatrix fm = new FieldMatrix(10,10);
+        InputStream is = CarPainter.class.getClassLoader().getResourceAsStream("Field10x10.txt");
+        FieldMatrix fm = FieldMatrix.load(new InputStreamReader(is));
+
         CarPainter p = new CarPainter(fm);
         BasicCarServer carServer = new BasicCarServer(fm, p);
         Car car = carServer.createCar();
@@ -24,7 +28,7 @@ public class Main {
         script.addCommand(command);
         command = new LeftCommand(3,car);
         script.addCommand(command);
-        command = new ChangeColorCommand("red",car);
+        command = new ChangeColorCommand("blue",car);
         script.addCommand(command);
         command = new UpCommand(2,car);
         script.addCommand(command);

@@ -25,7 +25,33 @@ public class FieldMatrix {
                 cells[i][j] = CellState.EMPTY;
     }
     public static FieldMatrix load(InputStreamReader isr){
-        throw new UnsupportedOperationException("Method not implemented");
+        try (Scanner scanner = new Scanner(isr)){
+            int rows = 0;
+            int cols = 0;
+            if (scanner.hasNextInt()) rows = scanner.nextInt();
+            if (scanner.hasNextInt()) cols = scanner.nextInt();
+
+            FieldMatrix fm = new FieldMatrix(rows,cols);
+            scanner.nextLine();
+
+            for (int i = 0; i < rows; i++) {
+                String line = "";
+                if (scanner.hasNext()) line = scanner.nextLine();
+                try {
+                    for (int j = 0; j < cols; j++) {
+                        //System.out.println("line=" + line + " i=" + i + " j=" + j);
+                        switch (line.charAt(j)) {
+                            case '*':
+                                fm.cells[i][j] = CellState.WALL;
+                        }
+                    }
+                }catch(StringIndexOutOfBoundsException e){}
+            }
+            return fm;
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public CellState getCellState(int row, int col){
