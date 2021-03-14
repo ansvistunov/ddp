@@ -16,6 +16,5 @@ public class DownCommand extends Command<Integer> {
     @Override
     public void execute() {
         for (int i = 0; i < parameter; i++) car.moveTo(CarServer.Direction.DOWN);
-        System.out.println("Down Command exit");
     }
 }
