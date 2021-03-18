@@ -14,8 +14,9 @@ public class ChangeColorCommand extends Command<String> {
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         car.setColor(ColorFactory.getColor(parameter));
+        return true;
     }
 
     static{

@@ -16,8 +16,10 @@ public class MoveCommand extends Command<Integer> {
     }
 
     @Override
-    public void execute() {
-        for (int i = 0; i < parameter; i++) car.moveTo(direction);
+    public boolean execute() {
+        for (int i = 0; i < parameter; i++)
+            if (!car.moveTo(direction)) return false;
+        return true;
     }
 
 

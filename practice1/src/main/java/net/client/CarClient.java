@@ -33,11 +33,11 @@ public class CarClient {
 
     }
 
-    public void executeCommand(Command command){
+    public boolean executeCommand(Command command){
         try {
             dos.writeUTF(commands.get(command.getClass().getName()));
             dos.writeUTF(command.getParameter().toString());
-            System.out.println("command "+command+" executed");
+            return dis.readBoolean();
         }catch(IOException e){
             e.printStackTrace();
             throw new RuntimeException(e.getCause());

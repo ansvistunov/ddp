@@ -55,5 +55,5 @@ public abstract class Command<T> {
         return this.getClass().getName() + " " + parameter;
     };
 
-    public abstract void execute();
+    public abstract boolean execute();
 }

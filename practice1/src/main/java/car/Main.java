@@ -1,6 +1,7 @@
 package car;
 
 import car.command.Script;
+import net.client.CarClient;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -19,6 +20,9 @@ public class Main {
         FieldMatrix fm = new FieldMatrix(10,10);
         CarPainter p = new CarPainter(fm);
         BasicCarServer carServer = new BasicCarServer(fm, p);
+
+
+
 
 
 

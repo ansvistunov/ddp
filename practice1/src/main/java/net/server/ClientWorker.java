@@ -36,10 +36,14 @@ public class ClientWorker implements Runnable {
                 String stringCommand = dis.readUTF();
                 String parameter = dis.readUTF();
                 Command command = Command.createCommand(car, stringCommand + " " + parameter);
-                System.out.println("command="+command);
-                command.execute();
+                boolean result = false;
+                try {
+                    result = command.execute();
+                }catch (Exception e){}
+                dos.writeBoolean(result);
             }
         } catch (IOException e) {
+            carServer.destroyCar(car);
             e.printStackTrace();
         }
     }

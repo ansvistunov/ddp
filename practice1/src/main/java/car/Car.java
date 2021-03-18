@@ -15,6 +15,7 @@ public class Car {
     private int index;
     private int speed = 500;
     private Color color;
+    private String name;
 
     public Car(CarServer carServer, Position position){
         this.carServer = carServer;
@@ -29,6 +30,7 @@ public class Car {
     }
 
     public Color getColor(){return color;}
+    public String getName(){return name;}
 
     public void destroy(){
         carServer.destroyCar(this);

@@ -23,7 +23,7 @@ public class CarPainter extends JPanel implements CarEventsListener {
         cars = new ArrayList<>();
         this.fieldMatrix = fieldMatrix;
         JFrame f = new JFrame("Cars");
-        setBackground(Color.WHITE);
+        setBackground(Color.LIGHT_GRAY);
         f.setSize(fieldMatrix.cols * preferedCellSize + 2 * preferedGap, fieldMatrix.rows * preferedCellSize + 2 * preferedGap);
         f.add(this);
         f.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -35,6 +35,7 @@ public class CarPainter extends JPanel implements CarEventsListener {
         super.paintComponent(g);
         int screenWidth = getWidth();
         int screenHeight = getHeight();
+        FontMetrics fm = g.getFontMetrics();
         g.setColor(Color.BLACK);
         int width = Math.min(screenHeight - 2 * preferedGap, screenWidth - 2 * preferedGap);
         int step = width / Math.max(fieldMatrix.cols, fieldMatrix.rows);
@@ -52,6 +53,12 @@ public class CarPainter extends JPanel implements CarEventsListener {
             Position p = car.getPosition();
             g.setColor(car.getColor());
             g.fill3DRect(p.col * step + preferedGap, p.row * step + preferedGap, step, step, false);
+            if (car.getName() != null){
+                int stringWith = fm.stringWidth(car.getName());
+                g.setColor(Color.WHITE);
+                g.drawString(car.getName(),p.col * step + preferedGap + (step - stringWith)/2, p.row * step + preferedGap + step/2);
+            }
+
         }
     }
 
