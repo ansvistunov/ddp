@@ -35,6 +35,7 @@ public abstract class Command<T> {
         this.car = car;
     }
 
+    public T getParameter(){return parameter;}
 
     public static Command createCommand(Car car, String nextLine) {
         String[] tokens = nextLine.split("\\s+");
@@ -48,6 +49,11 @@ public abstract class Command<T> {
             throw new RuntimeException(e.getException());
         }
     }
+
+    @Override
+    public String toString(){
+        return this.getClass().getName() + " " + parameter;
+    };
 
     public abstract void execute();
 }
