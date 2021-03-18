@@ -3,12 +3,9 @@ package car.command;
 import car.Car;
 
 import java.io.InputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 
 /**
