@@ -7,17 +7,11 @@ import car.CarServer;
  * @author : Alex
  * @created : 12.03.2021, пятница
  **/
-public class RightCommand extends Command<Integer>{
+public class RightCommand extends MoveCommand{
     public RightCommand(Integer parameter, Car car){
-        super(parameter, car);
+        super(parameter, car, CarServer.Direction.RIGHT);
     }
-
-    @Override
-    public void execute() {
-        for (int i = 0; i < parameter; i++) car.moveTo(CarServer.Direction.RIGHT);
-
-    }
-    public static Command loadCommand(String parameter, Car car){
-        return new RightCommand(Integer.parseInt(parameter), car);
+    static{
+        factory.put(RightCommand.class, (param, car)->new RightCommand(Integer.parseInt(param),car));
     }
 }

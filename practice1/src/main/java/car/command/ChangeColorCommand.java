@@ -18,7 +18,7 @@ public class ChangeColorCommand extends Command<String> {
         car.setColor(ColorFactory.getColor(parameter));
     }
 
-    public static Command loadCommand(String parameter, Car car){
-        return new ChangeColorCommand(parameter, car);
+    static{
+        factory.put(ChangeColorCommand.class, (param, car)->new ChangeColorCommand(param,car));
     }
 }

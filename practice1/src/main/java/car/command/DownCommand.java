@@ -7,18 +7,12 @@ import car.CarServer;
  * @author : Alex
  * @created : 11.03.2021, четверг
  **/
-public class DownCommand extends Command<Integer> {
+public class DownCommand extends MoveCommand {
     public DownCommand(Integer parameter, Car car){
-        super(parameter, car);
+        super(parameter, car, CarServer.Direction.DOWN);
     }
 
-    @Override
-    public void execute() {
-        for (int i = 0; i < parameter; i++) car.moveTo(CarServer.Direction.DOWN);
-
-    }
-
-    public static Command loadCommand(String parameter, Car car){
-        return new DownCommand(Integer.parseInt(parameter), car);
+    static{
+        factory.put(DownCommand.class, (param, car)->new DownCommand(Integer.parseInt(param),car));
     }
 }
