@@ -14,7 +14,7 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) throws Exception{
         InputStream is = CarPainter.class.getClassLoader().getResourceAsStream("Field10x10.txt");
-        System.out.println(is);
+        //System.out.println(is);
         //FieldMatrix fm = FieldMatrix.load(new InputStreamReader(is));
         FieldMatrix fm = new FieldMatrix(10,10);
         CarPainter p = new CarPainter(fm);

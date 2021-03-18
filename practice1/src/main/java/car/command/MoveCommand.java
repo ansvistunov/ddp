@@ -10,10 +10,6 @@ import car.CarServer;
 public class MoveCommand extends Command<Integer> {
     private final CarServer.Direction direction;
 
-    static {
-        System.out.println("load MoveCommand");
-    }
-
     public MoveCommand(Integer parameter, Car car, CarServer.Direction direction){
         super(parameter, car);
         this.direction = direction;
