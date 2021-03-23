@@ -3,8 +3,6 @@ package net.server;
 import car.BasicCarServer;
 import car.Car;
 import car.command.Command;
-import net.CommandCode;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
