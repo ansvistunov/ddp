@@ -7,12 +7,16 @@ public class UDPClient {
     public static void main(String args[]) {
         // args give message contents and destination hostname
         try {
-            DatagramSocket aSocket = new DatagramSocket();      // create socket
-            byte[] message = args[0].getBytes();
-            InetAddress aHost = InetAddress.getByName(args[1]); // DNS lookup
             int serverPort = 8080;
+            String serverHost = args[1];
+            String msg = args[0];
+
+            DatagramSocket aSocket = new DatagramSocket();      // create socket
+            byte[] message = msg.getBytes();
+            InetAddress aHost = InetAddress.getByName(serverHost); // DNS lookup
+
             DatagramPacket request =
-                    new DatagramPacket(message, args[0].length(), aHost, serverPort);
+                    new DatagramPacket(message, message.length, aHost, serverPort);
             System.out.println("new packet to "+aHost);
             aSocket.send(request);              //send message
             byte[] buffer = new byte[1000];

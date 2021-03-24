@@ -7,11 +7,13 @@ public class TCPClient {
     public static void main(String args[]) {
         // arguments supply message and hostname
         int serverPort = 8080;
-        try (Socket s = new Socket(args[1], serverPort)) {
-            System.out.println("Connected to "+args[1]);
+        String serverHost = args[1];
+        String message = args[0];
+        try (Socket s = new Socket(serverHost, serverPort)) {
+            System.out.println("Connected to "+serverHost);
             DataInputStream in = new DataInputStream(s.getInputStream());
             DataOutputStream out = new DataOutputStream(s.getOutputStream());
-            out.writeUTF(args[0]); // UTF is a string encoding
+            out.writeUTF(message); // UTF is a string encoding
             String data = in.readUTF(); // read a line of data from the stream
             System.out.println("Received: " + data);
         } catch (UnknownHostException e) {
