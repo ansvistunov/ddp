@@ -8,13 +8,13 @@ import car.util.ColorFactory;
  * @author : Alex
  * @created : 12.03.2021, пятница
  **/
-public class ChangeColorCommand extends Command<String> {
+public class ChangeColorCommand extends Command<String, Boolean> {
     public ChangeColorCommand(String parameter, Car car){
         super(parameter, car);
     }
 
     @Override
-    public boolean execute() {
+    public Boolean execute() {
         car.setColor(ColorFactory.getColor(parameter));
         return true;
     }

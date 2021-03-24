@@ -43,14 +43,23 @@ public class Car {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        if (carServer.moveCarTo(this,direction)){
-            position = position.move(direction);
-            return true;
-        }else
+        try {
+            if (carServer.moveCarTo(this, direction)) {
+                position = position.move(direction);
+                return true;
+            } else
+                return false;
+        }catch(ArrayIndexOutOfBoundsException e){
             return false;
+        }
 
     }
     public Position getPosition(){return position;}
 
     public int getIndex(){return index;}
+
+    @Override
+    public String toString(){
+        return "Car: index="+index;
+    }
 }
