@@ -22,6 +22,7 @@ class ClientConnection extends Thread {
     public void run() { // an echo server
         try {
             String data = in.readUTF(); // read a line of data from the stream
+            System.out.println("recieved:"+data);
             out.writeUTF(data); // write a line to the stream
             clientSocket.close();
         } catch (EOFException e) {
