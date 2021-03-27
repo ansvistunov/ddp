@@ -42,7 +42,7 @@ public class ClientWorker implements Runnable {
                 dos.writeBoolean(result);
                 //System.out.println("all writed "+this);
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             carServer.destroyCar(car);
             e.printStackTrace();
         }

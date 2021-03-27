@@ -19,7 +19,7 @@ public class BasicCarServer implements CarServer {
     }
 
     @Override
-    public Car createCar() {
+    public synchronized Car createCar() {
         Position freeCell = fieldMatrix.occupyFirstFreeCellByCar();
         Car car = new Car(this, freeCell);
         cars.add(car);
