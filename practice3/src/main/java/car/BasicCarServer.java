@@ -41,6 +41,7 @@ public class BasicCarServer implements CarServer {
     @Override
     public void destroyCar(Car car) {
         cars.remove(car);
+        fieldMatrix.freeCellFromCar(car.getPosition());
         carEventsListener.carDestroyed(car);
     }
 

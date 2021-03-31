@@ -70,6 +70,7 @@ public class CarPainter extends JPanel implements CarEventsListener {
     @Override
     public void carDestroyed(Car car) {
         cars.remove(car);
+        repaint();
     }
 
     @Override
