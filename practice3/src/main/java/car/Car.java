@@ -1,6 +1,7 @@
 package car;
 
 import java.awt.*;
+import java.time.LocalDateTime;
 import java.util.Random;
 
 /**
@@ -16,6 +17,7 @@ public class Car {
     private int speed = 500;
     private Color color;
     private String name;
+    private LocalDateTime lastOperation;
 
     public Car(CarServer carServer, Position position){
         this.carServer = carServer;
@@ -23,6 +25,7 @@ public class Car {
         speed = new Random().nextInt(300) + 300;
         index = count++;
         color = new Color((int)(Math.random() * 0x1000000));
+        lastOperation = LocalDateTime.now();
     }
 
     public void setColor(Color color){
@@ -32,7 +35,7 @@ public class Car {
     public Color getColor(){return color;}
     public String getName(){return name;}
     public void setName(String name){this.name = name;}
-
+    public LocalDateTime getLastOperation(){return lastOperation;}
     public void destroy(){
         carServer.destroyCar(this);
     }
@@ -44,6 +47,7 @@ public class Car {
             e.printStackTrace();
         }
         try {
+            lastOperation = LocalDateTime.now();
             if (carServer.moveCarTo(this, direction)) {
                 position = position.move(direction);
                 return true;

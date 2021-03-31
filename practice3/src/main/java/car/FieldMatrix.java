@@ -69,6 +69,10 @@ public class FieldMatrix {
         throw new RuntimeException("No empty fields!");
     }
 
+    public synchronized void freeCellFromCar(Position carPosition){
+        cells[carPosition.row][carPosition.col] = CellState.EMPTY;
+    }
+
     public boolean moveCarTo(int fromrow, int fromcol, int torow, int tocol){
         CellState cellState = cells[torow][tocol];
         synchronized (cellState){
