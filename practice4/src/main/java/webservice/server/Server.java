@@ -11,6 +11,9 @@ import java.io.InputStreamReader;
 @WebService
 public class Server {
     BasicCarServer carServer;
+    //public static final String url = "http://10.66.66.2:8080/CarServer";
+    public static final String url = "http://localhost:8080/CarServer";
+
     protected Server(FieldMatrix fieldMatrix, CarEventsListener carEventsListener) {
         carServer = BasicCarServer.createCarServer(fieldMatrix, carEventsListener);
     }
@@ -51,6 +54,6 @@ public class Server {
         CarPainter p = new CarPainter(fm);
 
         Server server = new Server(fm,p);
-        Endpoint.publish("http://localhost:8080/CarServer", server);
+        Endpoint.publish(url, server);
     }
 }

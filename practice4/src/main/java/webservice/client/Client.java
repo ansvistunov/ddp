@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.Random;
 
 public class Client {
+    //static final String wsdl = "http://132.145.228.39:8080/CarServer?wsdl";
     static final String wsdl = "http://localhost:8080/CarServer?wsdl";
 
     static class CarMover implements Runnable {
