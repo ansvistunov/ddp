@@ -52,7 +52,7 @@ public class RMIServer extends BasicCarServer implements RemoteCarServer {
         CarPainter p = new CarPainter(fm);
         RMIServer server = new RMIServer(fm, p);
         Registry registry = LocateRegistry.createRegistry(port);
-        RemoteCarServer proxy = (RemoteCarServer) UnicastRemoteObject.exportObject(server,0);
+        RemoteCarServer proxy = (RemoteCarServer) UnicastRemoteObject.exportObject(server,port);
         registry.rebind(carServerName, proxy);
         System.out.println("RMI Car Server started on port "+port);
     }

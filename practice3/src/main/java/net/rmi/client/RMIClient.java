@@ -16,7 +16,7 @@ import java.util.Random;
 public class RMIClient {
     public static final int port = 8080;
     public static final String carServerName = "RMICarServer";
-    public static final String host = "localhost";
+    public static final String host = "132.145.228.39";
     static int index = 0;
 
     public static void main(String[] args) throws Exception {
