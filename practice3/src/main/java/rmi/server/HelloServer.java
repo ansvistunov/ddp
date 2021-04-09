@@ -23,7 +23,7 @@ public class HelloServer implements HelloChat {
     public static void main(String[] args) throws Exception{
         HelloServer server = new HelloServer();
         Registry registry = LocateRegistry.createRegistry(port);
-        HelloChat obj = (HelloChat) UnicastRemoteObject.exportObject(server, 0);
+        HelloChat obj = (HelloChat) UnicastRemoteObject.exportObject(server, port);
         registry.bind(name, obj);
         System.out.println("Server started on port "+port);
     }
