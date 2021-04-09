@@ -19,7 +19,7 @@ public class HelloClient {
         Registry registry = LocateRegistry.getRegistry(host, port);
         System.out.println(String.format("Client connected to registry on host %s and port %d",host, port));
         HelloChat server = (HelloChat) registry.lookup(name);
-        System.out.println("proxy="+server);
+        System.out.println("server="+server);
         server.message("Alex", "Hello");
     }
 }
