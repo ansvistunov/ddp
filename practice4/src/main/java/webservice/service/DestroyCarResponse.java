@@ -1,5 +1,5 @@
 
-package hello.webservice;
+package webservice.service;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for sayHello complex type.
+ * <p>Java class for destroyCarResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="sayHello"&gt;
+ * &lt;complexType name="destroyCarResponse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "sayHello")
-public class SayHello {
+@XmlType(name = "destroyCarResponse")
+public class DestroyCarResponse {
 
 
 }

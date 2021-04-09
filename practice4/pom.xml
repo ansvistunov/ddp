@@ -37,10 +37,10 @@
             </executions>
             <configuration>
                 <wsdlUrls>
-                    <wsdlUrl>http://localhost:8080/Hello?wsdl</wsdlUrl>
+                    <wsdlUrl>http://localhost:8080/CarServer?wsdl</wsdlUrl>
                 </wsdlUrls>
                 <keep>true</keep>
-                <packageName>hello.webservice</packageName>
+                <packageName>webservice.service</packageName>
                 <sourceDestDir>src/main/java</sourceDestDir>
             </configuration>
         </plugin>
