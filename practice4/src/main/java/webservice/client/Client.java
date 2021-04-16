@@ -16,6 +16,7 @@ public class Client {
         public CarMover(String url) throws Exception{
             ServerService service = new ServerService(new URL(url));
             server = service.getServerPort();
+            System.out.println(server);
 
         }
 

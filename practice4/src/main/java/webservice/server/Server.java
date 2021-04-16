@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 public class Server {
     BasicCarServer carServer;
     //public static final String url = "http://10.66.66.2:8080/CarServer";
-    public static final String url = "http://localhost:8080/CarServer";
+    public static final String url = "http://0.0.0.0:8080/CarServer";
 
     protected Server(FieldMatrix fieldMatrix, CarEventsListener carEventsListener) {
         carServer = BasicCarServer.createCarServer(fieldMatrix, carEventsListener);
