@@ -26,9 +26,10 @@ public class JmsClient implements MessageListener, Runnable{
 
     public static void main(String[] args) {
         new Thread(new JmsClient()).start();
-        //new Thread(new JmsClient()).start();
-        //new Thread(new JmsClient()).start();
-        //new Thread(new JmsClient()).start();
+        new Thread(new JmsClient()).start();
+        new Thread(new JmsClient()).start();
+        new Thread(new JmsClient()).start();
+        new Thread(new JmsClient()).start();
     }
 
     SerializableReturn sendCommand(SerializableCommand command){
@@ -95,20 +96,22 @@ public class JmsClient implements MessageListener, Runnable{
     @Override
     public void run() {
         createConnection();
-        SerializableCommand command = new SerializableCommand(0, "CREATECAR", "");
+        Random random = new Random();
+        SerializableCommand command = new SerializableCommand(random.nextInt(Integer.MAX_VALUE), "CREATECAR", "");
         SerializableReturn ret = sendCommand(command);
         Integer carIndex = (Integer)ret.ret;
         System.out.println("create car. CarIndex="+carIndex);
         command = new SerializableCommand(carIndex, "SETNAME", "Alex");
         sendCommand(command);
         CarServer.Direction direction = CarServer.Direction.DOWN;
-        Random random = new Random();
+
         while(true) {
             command = new SerializableCommand(carIndex, direction.name(), "1");
             ret = sendCommand(command);
             System.out.println("return move =" + ret);
             if ((Boolean) ret.ret != true){
                 direction = CarServer.Direction.values()[random.nextInt(4)];
+                System.out.println("="+carIndex+" change direction to "+direction);
             }
             command = new SerializableCommand(carIndex, "GETPOSITION", "1");
             ret = sendCommand(command);
