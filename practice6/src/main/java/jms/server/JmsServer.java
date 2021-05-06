@@ -22,7 +22,7 @@ import java.util.concurrent.Executors;
  * @created : 01.05.2021, суббота
  **/
 public class JmsServer implements MessageListener {
-    public static final String url = "tcp://localhost:61616";
+    public static final String url = "tcp://localhost:8080";
     public static final String commandChannel = "COMMANDS";
     public static final String retChannel = "RETS";
     private final BasicCarServer carServer;
