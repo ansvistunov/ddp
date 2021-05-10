@@ -32,7 +32,7 @@ public class KafkaServer {
 
     static final String user = "admin";
     static final String password = "admin-secret";
-    static final String broker = "localhost:9092";
+    static final String broker = "localhost:8080";
 
     KafkaProducer<Integer, String> producer;
     KafkaConsumer<Integer, String> consumer;
@@ -90,7 +90,7 @@ public class KafkaServer {
                     Command command = Command.createCommand(carServer.getCar(record.key()), record.value());
                     Object ret = command.execute();
                     System.out.println("ret=" + ret);
-                    producer.send(new ProducerRecord<Integer, String>(retChannel, record.key(), ret.toString()));
+                    producer.send(new ProducerRecord<Integer, String>(retChannel+"-"+record.key(), record.key(), ret.toString()));
                 }catch(Exception e){e.printStackTrace();}
 
             }

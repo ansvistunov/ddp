@@ -59,12 +59,14 @@ public class KafkaClient implements Runnable{
         Properties properties = prepareProperties(KafkaServer.user, KafkaServer.password, KafkaServer.broker);
         producer = new KafkaProducer<>(properties);
         consumer = new KafkaConsumer<>(properties);
-        consumer.subscribe(Arrays.asList(KafkaServer.retChannel));
+
     }
 
     public String sendCommand(int carIndex, String command){
         producer.send(new ProducerRecord<Integer,String>(KafkaServer.commandChannel, carIndex, command),
                 (recordMetadata, e) -> System.out.println("message send. offset is "+recordMetadata.offset()));
+
+        consumer.subscribe(Arrays.asList(KafkaServer.retChannel+"-"+carIndex));
 
         while(true) {
             ConsumerRecords<Integer, String> records = consumer.poll(Duration.ofMillis(maxCarSecondsDonNotMove * 1000));
